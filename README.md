@@ -1,4 +1,4 @@
-# PennStateSportsBot for Discord
+# Penn State SportsStat Bot for Discord
 Penn State Sports Discord Bot Capstone Project
 
 # Commands
