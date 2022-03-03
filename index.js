@@ -45,7 +45,7 @@ client.on('messageCreate', msg => {
 					{ name: 'Tickets:', value: '[Ticket Link](https://gopsusports.com/sports/2018/10/4/tickets-home.aspx)' },
 					{ name: 'Calendar:', value: '[Calendar Link](https://gopsusports.com/calendar)' },
 					{ name: 'News:', value: '[News Link](https://gopsusports.com/sports/general/archives?search=&sport=general&season=0)' },
-					{ name: 'Store', value: '[Store Link](https://shop.gopsusports.com/?_s=bm-top_nav&utm_source=psu&utm_medium=referral)'}
+					{ name: 'Store:', value: '[Store Link](https://shop.gopsusports.com/?_s=bm-top_nav&utm_source=psu&utm_medium=referral)'}
 				)
 			msg.channel.send({ embeds: [optionsEmbed] });
 			break;
