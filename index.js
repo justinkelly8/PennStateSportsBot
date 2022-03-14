@@ -54,13 +54,18 @@ client.on('messageCreate', msg => {
 			msg.channel.send("todo stats");
 			break;
 		case "!crash":
-			// crash the bot by ending the client
-			client.destroy();
-			//msg.channel.send("");
+			// reset the bot by ending the client
+			resetBot(msg.channel)
 			break;
-
 	}
 });
+
+function resetBot(channel) {
+    // send channel message that you're resetting bot
+    channel.send('Resetting...')
+    .then(msg => client.destroy())
+    .then(() => client.login(config.BOT_TOKEN));
+}
 
 //make sure this line is the last line
 client.login(config.BOT_TOKEN); //login bot using token
