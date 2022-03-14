@@ -18,7 +18,7 @@ client.on('messageCreate', msg => {
 			break;
 		case "!help":
 			// TODO design help documentation
-			msg.channel.send("todo stats");
+			msg.channel.send("Not yet implemented");
 			break;
 		case "!ticketinfo":
 			// bot provides link for sports tickets
@@ -52,6 +52,12 @@ client.on('messageCreate', msg => {
 			// TODO import statistics dynamically
 			msg.channel.send("todo stats");
 			break;
+		case "!crash":
+			// crash the bot by ending the client
+			client.destroy();
+			//msg.channel.send("");
+			break;
+
 	}
 });
 
