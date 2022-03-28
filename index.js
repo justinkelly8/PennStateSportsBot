@@ -18,14 +18,14 @@ client.on('messageCreate', msg => {
 			break;
 		case "!help":
 			// TODO design help documentation
-			msg.channel.send("Not yet implemented");
+			msg.reply("TODO insert commands list");
 			break;
 		case "!ticketinfo":
 			// bot provides link for sports tickets
-			msg.channel.send("https://gopsusports.com/sports/2018/10/4/tickets-home.aspx");
+			msg.reply("https://gopsusports.com/sports/2018/10/4/tickets-home.aspx");
 			break;
 		case "!calendar":
-			msg.channel.send("https://gopsusports.com/calendar");
+			msg.reply("https://gopsusports.com/calendar");
 			break;
 		case "!news":
 			// embedded psu sports news webpage link
@@ -34,7 +34,7 @@ client.on('messageCreate', msg => {
 				.setURL("https://gopsusports.com/sports/general/archives?search=&sport=general&season=0")
 				.setDescription("The official General news stories archives for the Penn State University Nittany Lions")
 				.setThumbnail("https://pngset.com/images/penn-state-logo-text-symbol-alphabet-number-transparent-png-1011448.png");
-			msg.channel.send({ embeds: [newsEmbed] });
+			msg.reply({ embeds: [newsEmbed] });
 			break;
 		case "!options":
 			// list of command options with links to website for easy access
@@ -47,11 +47,11 @@ client.on('messageCreate', msg => {
 					{ name: 'News:', value: '[News Link](https://gopsusports.com/sports/general/archives?search=&sport=general&season=0)' },
 					{ name: 'Store:', value: '[Store Link](https://shop.gopsusports.com/?_s=bm-top_nav&utm_source=psu&utm_medium=referral)'}
 				)
-			msg.channel.send({ embeds: [optionsEmbed] });
+			msg.reply({ embeds: [optionsEmbed] });
 			break;
 		case "!stats":
 			// TODO import statistics dynamically
-			msg.channel.send("todo stats");
+			msg.reply("todo stats");
 			break;
 		case "!crash":
 			// reset the bot by ending the client
@@ -68,5 +68,5 @@ function resetBot(channel) {
 }
 
 //make sure this line is the last line
-client.login(config.BOT_TOKEN); //login bot using token
+client.login(config.BOT_TOKEN); //login and authenticate bot using token
 
