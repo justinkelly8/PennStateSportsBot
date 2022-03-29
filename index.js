@@ -19,8 +19,11 @@ client.on('messageCreate', msg => {
 			msg.channel.send("Hello!");
 			break;
 		case "!help":
-			// TODO design help documentation
-			msg.reply("TODO insert commands list");
+			// documentation for bot commands
+			const helpEmbed = new Discord.MessageEmbed()
+				.setTitle("Commands Documentation")
+				.setDescription(`!test - bot responds with "Hello"\n!help - provides full list of bot commands\n!options - outputs list of command options with hyperlinks for easy access\n!ticketinfo - bot provides link to get PSU sports tickets\n!calendar - outputs link to PSU sports calendar\n!news - links to current sports news\n!crash - resets the bot`);
+			msg.reply( {embeds: [helpEmbed] });
 			break;
 		case "!ticketinfo":
 			// bot provides link for sports tickets
@@ -42,7 +45,7 @@ client.on('messageCreate', msg => {
 			// list of command options with links to website for easy access
 			const optionsEmbed = new Discord.MessageEmbed()
 				.setTitle("Penn State SportsStat Bot Options")
-				.setDescription("Clickable options below direct to gopsusports.com")
+				.setDescription("Clickable links below direct to gopsusports.com")
 				.addFields(
 					{ name: 'Tickets:', value: '[Ticket Link](https://gopsusports.com/sports/2018/10/4/tickets-home.aspx)' },
 					{ name: 'Calendar:', value: '[Calendar Link](https://gopsusports.com/calendar)' },
@@ -68,21 +71,21 @@ client.on('messageCreate', msg => {
 				pt = pt.substring(pt.search("/"));
 				const options = { hostname: hn, port: 443, path: pt, method: "GET" };
 				return new Promise(function (resolve, reject) {
-				  var buff = new Buffer.alloc(0);
-				  const req = https.request(options, (res) => {
-					res.on("data", (d) => {
-					  buff = Buffer.concat([buff, d]);
+					var buff = new Buffer.alloc(0);
+					const req = https.request(options, (res) => {
+						res.on("data", (d) => {
+							buff = Buffer.concat([buff, d]);
+						});
+						res.on("end", () => {
+							resolve(buff);
+						});
 					});
-					res.on("end", () => {
-					  resolve(buff);
+					req.on("error", (e) => {
+						console.error("https request error: " + e);
 					});
-				  });
-				  req.on("error", (e) => {
-					console.error("https request error: " + e);
-				  });
-				  req.end();
+					req.end();
 				});
-			  }
+			}
 			break;
 	}
 });
