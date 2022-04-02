@@ -58,6 +58,7 @@ client.on('messageCreate', msg => {
 			// reset the bot by ending the client
 			resetBot(msg.channel)
 			break;
+		// TODO add cases for all women's team sports
 		// cases for sports statistics below
 		// this can be refactored to be made more concise
 		// !season + sport for this season's current overall record
