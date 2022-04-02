@@ -54,10 +54,6 @@ client.on('messageCreate', msg => {
 				)
 			msg.reply({ embeds: [optionsEmbed] });
 			break;
-		case "!stats":
-			// TODO import statistics dynamically
-			msg.reply("todo stats");
-			break;
 		case "!crash":
 			// reset the bot by ending the client
 			resetBot(msg.channel)
@@ -74,9 +70,14 @@ client.on('messageCreate', msg => {
 				// other actions...
 				// this doesnt work as i intended initially
 				// something needed here to read scores from the webpage
-				
+
 				await browser.close();
 			})();
+			break;
+		case "!stats mbasketball 3/22":
+			// TODO import statistics dynamically
+			
+			msg.reply("todo stats for sports team and date");
 			break;
 	}
 });
