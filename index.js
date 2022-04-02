@@ -78,7 +78,6 @@ client.on('messageCreate', msg => {
 			break;
 		case "!season mbasketball":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
@@ -91,9 +90,22 @@ client.on('messageCreate', msg => {
 				run()
 			})();
 			break;
+		case "!season football":
+			(async () => {
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/football/schedule')
+					const element = await page.$("div.c-events__next-date");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
 		case "!season mgymnastics":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
@@ -108,7 +120,6 @@ client.on('messageCreate', msg => {
 			break;
 		case "!season mhockey":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
@@ -123,7 +134,6 @@ client.on('messageCreate', msg => {
 			break;
 		case "!season mlacrosse":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
@@ -138,12 +148,11 @@ client.on('messageCreate', msg => {
 			break;
 		case "!season msoccer":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
 					await page.goto('https://gopsusports.com/sports/mens-soccer/schedule')
-					const element = await page.$("li.large-flex-item-1");
+					const element = await page.$("div.c-events__next-date");
 					const text = await (await element.getProperty("innerText")).jsonValue();
 					console.log(await text);
 					msg.reply(await text);
@@ -153,7 +162,6 @@ client.on('messageCreate', msg => {
 			break;
 		case "!season mswimming":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
@@ -168,7 +176,6 @@ client.on('messageCreate', msg => {
 			break;
 		case "!season mtennis":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
@@ -183,7 +190,6 @@ client.on('messageCreate', msg => {
 			break;
 		case "!season mvolleyball":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
@@ -198,7 +204,6 @@ client.on('messageCreate', msg => {
 			break;
 		case "!season mwrestling":
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
