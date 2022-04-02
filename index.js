@@ -59,27 +59,59 @@ client.on('messageCreate', msg => {
 			resetBot(msg.channel)
 			break;
 		case "!webscrape":
-			// webscraping may need to be done directly from the HTML of gopsusports.com
-			// Testing using https://github.com/puppeteer/puppeteer
-			// try page.createPDFStream([option]) for streaming pdf data to the bot
+			// webscraping done directly from the HTML of gopsusports.com
+			// Testing use of https://github.com/puppeteer/puppeteer
 			(async () => {
-				// page is loaded in the browser by the bot + puppeteer
-				const browser = await puppeteer.launch();
-				const page = await browser.newPage();
-				await page.goto('https://gopsusports.com/documents/2022/3/31/2022_Baseball_Notes_Maryland.pdf');
-				// other actions...
-				// this doesnt work as i intended initially
-				// something needed here to read scores from the webpage
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
 
-				await browser.close();
+					const element = await page.$("div.sidearm-schedule-game-result");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
 			})();
 			break;
-		case "!stats mbasketball 3/22":
-			// TODO import statistics dynamically
-			
-			msg.reply("todo stats for sports team and date");
+		case "!results mbasketball season":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
+
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
 			break;
+		case "!stats mbasketball 3/10":
+			// todo for specific team and date
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
+
+					const elements = await page.$$("div.sidearm-schedule-game-result");
+					elements.forEach(async element => {
+						const text = await (await element.getProperty("innerText")).jsonValue();
+						console.log(await text);
+					});
+					msg.reply("need to work on");
+				}
+				run()
+			})();
 	}
+
 });
 
 function resetBot(channel) {
