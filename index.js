@@ -23,7 +23,7 @@ client.on('messageCreate', msg => {
 			const helpEmbed = new Discord.MessageEmbed()
 				.setTitle("Commands Documentation")
 				.setDescription(`!test - bot responds with "Hello"\n!help - provides full list of bot commands\n!options - outputs list of command options with hyperlinks for easy access\n!ticketinfo - bot provides link to get PSU sports tickets\n!calendar - outputs link to PSU sports calendar\n!news - links to current sports news\n!crash - resets the bot`);
-			msg.reply( {embeds: [helpEmbed] });
+			msg.reply({ embeds: [helpEmbed] });
 			break;
 		case "!ticketinfo":
 			// bot provides link for sports tickets
@@ -63,6 +63,20 @@ client.on('messageCreate', msg => {
 			resetBot(msg.channel)
 			break;
 		case "!webscrape":
+			// webscraping may need to be done directly from the HTML of gopsusports.com
+			// Testing using https://github.com/puppeteer/puppeteer
+			// try page.createPDFStream([option]) for streaming pdf data to the bot
+			(async () => {
+				// page is loaded in the browser by the bot + puppeteer
+				const browser = await puppeteer.launch();
+				const page = await browser.newPage();
+				await page.goto('https://gopsusports.com/documents/2022/3/31/2022_Baseball_Notes_Maryland.pdf');
+				// other actions...
+				// this doesnt work as i intended initially
+				// something needed here to read scores from the webpage
+				
+				await browser.close();
+			})();
 			break;
 	}
 });
