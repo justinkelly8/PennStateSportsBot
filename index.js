@@ -58,6 +58,178 @@ client.on('messageCreate', msg => {
 			// reset the bot by ending the client
 			resetBot(msg.channel)
 			break;
+		// cases for sports statistics below
+		// this can be refactored to be made more concise
+		// !season + sport for this season's current overall record
+		case "!season baseball":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/baseball/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season mbasketball":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season mgymnastics":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-gymnastics/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season mhockey":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-ice-hockey/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season mlacrosse":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-lacrosse/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season msoccer":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-soccer/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season mswimming":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-swimming-and-diving/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season mtennis":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-tennis/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season mvolleyball":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-volleyball/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		case "!season mwrestling":
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/wrestling/schedule')
+					const element = await page.$("li.large-flex-item-1");
+					const text = await (await element.getProperty("innerText")).jsonValue();
+					console.log(await text);
+					msg.reply(await text);
+				}
+				run()
+			})();
+			break;
+		// the case below is trying to find a specified game based on user command	
+		case "!stats mbasketball 3/10":
+			// todo for specific team and date
+			(async () => {
+				// page is loaded in Chromium by the bot + puppeteer
+				async function run() {
+					const browser = await puppeteer.launch({ headless: false })
+					const page = await browser.newPage()
+					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
+					const elements = await page.$$("div.sidearm-schedule-game-result");
+					elements.forEach(async element => {
+						const text = await (await element.getProperty("innerText")).jsonValue();
+						console.log(await text);
+					});
+					msg.reply("need to work on");
+				}
+				run()
+			})();
+			break;
 		case "!webscrape":
 			// webscraping done directly from the HTML of gopsusports.com
 			// Testing use of https://github.com/puppeteer/puppeteer
@@ -76,40 +248,6 @@ client.on('messageCreate', msg => {
 				run()
 			})();
 			break;
-		case "!results mbasketball season":
-			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
-				async function run() {
-					const browser = await puppeteer.launch({ headless: false })
-					const page = await browser.newPage()
-					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
-
-					const element = await page.$("li.large-flex-item-1");
-					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
-					msg.reply(await text);
-				}
-				run()
-			})();
-			break;
-		case "!stats mbasketball 3/10":
-			// todo for specific team and date
-			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
-				async function run() {
-					const browser = await puppeteer.launch({ headless: false })
-					const page = await browser.newPage()
-					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
-
-					const elements = await page.$$("div.sidearm-schedule-game-result");
-					elements.forEach(async element => {
-						const text = await (await element.getProperty("innerText")).jsonValue();
-						console.log(await text);
-					});
-					msg.reply("need to work on");
-				}
-				run()
-			})();
 	}
 
 });
