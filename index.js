@@ -2,6 +2,7 @@ require('dotenv').config(); //initialize dotenv
 const Discord = require('discord.js'); //import discord.js
 const config = require("./config.json");
 const https = require("https");
+const puppeteer = require('puppeteer'); //for web scraping online documents
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });//create new client
 
