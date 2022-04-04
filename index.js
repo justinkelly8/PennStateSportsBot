@@ -352,7 +352,7 @@ client.on('messageCreate', msg => {
 		case "!stats mbasketball March 10":
 			// todo for specific team and date
 			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
+				// page loaded in Chromium by the bot + puppeteer
 				async function run() {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
