@@ -5,6 +5,7 @@ Penn State Sports Discord Bot for Capstone Project
 ```
 !season followed by the desired sport eg. "!season mbasketball"  
 (msoccer, wtennis, football, baseball, etc) - responds with this season's overall record for the sport
+!season help - provides list of options for "!season" command 
 !test - bot responds with "Hello" message 
 !help - outputs full list of bot commands
 !options - outputs list of command options with hyperlinks
