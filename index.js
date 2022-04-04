@@ -345,7 +345,7 @@ client.on('messageCreate', msg => {
 			})();
 			break;
 		case "!season help":
-			const seasonHelp = `!season followed by the sport, eg. !season wbasketball; other options include mbasketball, baseball, softball, football, wrestling, mgymnastics, wgymnastics, mhockey, whockey, msoccer, wsoccer, mlacrosse, wlacrosse, mswimming, wswimming, mtennis, wtennis, mvolleyball, wvolleyball`;
+			const seasonHelp = `!season followed by the sport eg. "!season wbasketball"; other options include: mbasketball, baseball, softball, football, wrestling, mgymnastics, wgymnastics, mhockey, whockey, msoccer, wsoccer, mlacrosse, wlacrosse, mswimming, wswimming, mtennis, wtennis, mvolleyball, wvolleyball`;
 			msg.reply(seasonHelp);
 			break;
 		// the case below is trying to find a specified game based on user command	
