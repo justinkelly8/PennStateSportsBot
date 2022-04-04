@@ -357,12 +357,11 @@ client.on('messageCreate', msg => {
 					const browser = await puppeteer.launch({ headless: false })
 					const page = await browser.newPage()
 					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
-					const elements = await page.$$("div.sidearm-schedule-game-result");
+					const elements = await page.$$("div.sidearm-schedule-game-opponent-date");
 					elements.forEach(async element => {
 						const text = await (await element.getProperty("innerText")).jsonValue();
 						console.log(await text);
 					});
-					msg.reply("need to work on");
 				}
 				run()
 			})();
