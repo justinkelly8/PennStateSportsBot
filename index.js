@@ -52,10 +52,10 @@ client.on('messageCreate', msg => {
 				.setTitle("Penn State SportsStat Bot Options")
 				.setDescription("Clickable links below direct to gopsusports.com")
 				.addFields(
-					{ name: 'Tickets:', value: '[Ticket Link](https://gopsusports.com/sports/2018/10/4/tickets-home.aspx)' },
-					{ name: 'Calendar:', value: '[Calendar Link](https://gopsusports.com/calendar)' },
-					{ name: 'News:', value: '[News Link](https://gopsusports.com/sports/general/archives?search=&sport=general&season=0)' },
-					{ name: 'Store:', value: '[Store Link](https://shop.gopsusports.com/?_s=bm-top_nav&utm_source=psu&utm_medium=referral)' }
+					{ name: 'Penn State Sports Tickets:', value: '[Tickets Link](https://gopsusports.com/sports/2018/10/4/tickets-home.aspx)' },
+					{ name: 'Event Calendar:', value: '[Calendar Link](https://gopsusports.com/calendar)' },
+					{ name: 'Keep Up to Date:', value: '[News Link](https://gopsusports.com/sports/general/archives?search=&sport=general&season=0)' },
+					{ name: 'Merchandise:', value: '[Store Link](https://shop.gopsusports.com/?_s=bm-top_nav&utm_source=psu&utm_medium=referral)' }
 				)
 			msg.reply({ embeds: [optionsEmbed] });
 			break;
