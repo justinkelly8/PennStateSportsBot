@@ -9,6 +9,8 @@ const jquery = require('jquery');
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });//create new client
 
+const basketball_url = 'https://www.sports-reference.com/cbb/schools/penn-state/2022-schedule.html'
+
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -73,8 +75,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/baseball/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -88,8 +90,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/softball/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -102,8 +104,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -116,8 +118,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/womens-basketball/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -130,8 +132,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/football/schedule')
 					const element = await page.$("div.c-events__next-date");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -144,8 +146,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/mens-gymnastics/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -158,8 +160,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/womens-gymnastics/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -172,8 +174,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/mens-ice-hockey/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -186,8 +188,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/womens-ice-hockey/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -200,8 +202,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/mens-lacrosse/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -214,8 +216,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/womens-lacrosse/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -228,8 +230,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/mens-soccer/schedule')
 					const element = await page.$("div.c-events__next-date");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -242,8 +244,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/womens-soccer/schedule')
 					const element = await page.$("div.c-events__next-date");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -256,8 +258,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/mens-swimming-and-diving/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -270,8 +272,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/womens-swimming-and-diving/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -284,8 +286,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/mens-tennis/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -298,8 +300,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/womens-tennis/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -312,8 +314,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/mens-volleyball/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -326,8 +328,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/womens-volleyball/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -340,8 +342,8 @@ client.on('messageCreate', msg => {
 					await page.goto('https://gopsusports.com/sports/wrestling/schedule')
 					const element = await page.$("li.large-flex-item-1");
 					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
 					msg.reply(await text);
+					await browser.close();
 				}
 				run()
 			})();
@@ -350,30 +352,90 @@ client.on('messageCreate', msg => {
 			const seasonHelp = `!season followed by the sport eg. "!season wbasketball"; other options include: mbasketball, baseball, softball, football, wrestling, mgymnastics, wgymnastics, mhockey, whockey, msoccer, wsoccer, mlacrosse, wlacrosse, mswimming, wswimming, mtennis, wtennis, mvolleyball, wvolleyball`;
 			msg.reply(seasonHelp);
 			break;
-		// the case below is trying to find a specified game based on user command	
-		// case "!stats mbasketball March 10":
-		// 	(async () => {
-		// 		// page loaded in Chromium by the bot + puppeteer
-		// 		async function run() {
-		// 			const browser = await puppeteer.launch({ headless: false });
-		// 			const page = await browser.newPage();
-		// 			await page.goto('https://gopsusports.com/sports/mens-basketball/schedule');
 
-		// 			const rows = await page.$$('div.sidearm-schedule-game-opponent-date.flex-item-1');
-		// 			console.log("--selector", rows);
-					
-		// 			for(let i=0; i< rows.length; i++) {
-		// 				const row = rows[i];
-		// 				const value = await row.$eval('div.sidearm-schedule-game-opponent-date.flex-item-1', element => element.textContent);
-		// 				console.log(value); // incorrect selector for value
-		// 				//const value = await row.$eval('')
-		// 				if(value === 'Mar 10 (Thu)') {
-		// 	
-		// 			await browser.close();
-		// 		}
-		// 		run()
-		// 	})();
-		// 	break;
+		case "!game mbasketball Nov 10":
+			// gets input and compares to scores from Penn State's schedule
+			async function getGameDaysAndLinks() {
+				const { data } = await axios.get(basketball_url)
+				const $ = cheerio.load(data);
+				const table = $('#schedule')
+				const games = []
+				table.find('tbody > tr').each((i, element) => {
+					const $row = $(element)
+					const game = {}
+					game.number = $row.find('th').first().text().trim()
+					const labels = ['date_game', 'time_game', 'game_type', 'game_location', 'opp_name', 'conf_abbr', 'game_result', 'pts', 'opp_pts', 'overtimes', 'wins', 'losses', 'game_streak', 'arena']
+					$row.find('td').each((i, element) => {
+						const $col = $(element)
+						const label = labels[i]
+						game[label] = $col.text().trim()
+					})
+					games.push(game)
+				})
+				//console.log(games[0].date_game)
+				if (games[0].date_game.includes("Nov 10")) {
+					msg.reply("Penn State " + games[0].pts + " - " + games[0].opp_pts + " " + games[0].opp_name);
+				}
+			}
+			getGameDaysAndLinks()
+
+			break;
+
+		case "!game mbasketball Nov 15":
+			// gets input and compares to scores from Penn State's schedule
+			async function getGameDayAndLink() {
+				const { data } = await axios.get(basketball_url)
+				const $ = cheerio.load(data);
+				const table = $('#schedule')
+				const games = []
+				table.find('tbody > tr').each((i, element) => {
+					const $row = $(element)
+					const game = {}
+					game.number = $row.find('th').first().text().trim()
+					const labels = ['date_game', 'time_game', 'game_type', 'game_location', 'opp_name', 'conf_abbr', 'game_result', 'pts', 'opp_pts', 'overtimes', 'wins', 'losses', 'game_streak', 'arena']
+					$row.find('td').each((i, element) => {
+						const $col = $(element)
+						const label = labels[i]
+						game[label] = $col.text().trim()
+					})
+					games.push(game)
+				})
+				//console.log(games[0].date_game)
+				if (games[1].date_game.includes("Nov 15")) {
+					msg.reply("Penn State " + games[1].pts + " - " + games[1].opp_pts + " " + games[1].opp_name);
+				}
+			}
+			getGameDayAndLink()
+
+			break;
+
+		case "!game mbasketball Mar 10":
+			// gets input and compares to scores from Penn State's schedule
+			async function ohioGameDayAndLink() {
+				const { data } = await axios.get(basketball_url)
+				const $ = cheerio.load(data);
+				const table = $('#schedule')
+				const games = []
+				table.find('tbody > tr').each((i, element) => {
+					const $row = $(element)
+					const game = {}
+					game.number = $row.find('th').first().text().trim()
+					const labels = ['date_game', 'time_game', 'game_type', 'game_location', 'opp_name', 'conf_abbr', 'game_result', 'pts', 'opp_pts', 'overtimes', 'wins', 'losses', 'game_streak', 'arena']
+					$row.find('td').each((i, element) => {
+						const $col = $(element)
+						const label = labels[i]
+						game[label] = $col.text().trim()
+					})
+					games.push(game)
+				})
+				//console.log(games[0].date_game)
+				if (games[30].date_game.includes("Mar 10")) {
+					msg.reply("Penn State " + games[30].pts + " - " + games[30].opp_pts + " " + games[30].opp_name);
+				}
+			}
+			ohioGameDayAndLink()
+
+			break;
 
 		case "!webscrape":
 			// webscraping done directly from the HTML of gopsusports.com
@@ -396,6 +458,12 @@ client.on('messageCreate', msg => {
 			})();
 			break;
 
+		case "!stats ":
+			if (games[0].date_game == dateInput) {
+				console.log("Penn State " + games[0].pts + " - " + games[0].opp_pts + "" + games[0].opp_name);
+
+			}
+			break;
 	}
 
 });
