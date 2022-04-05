@@ -5,6 +5,7 @@ const https = require("https");
 const puppeteer = require('puppeteer'); //for web scraping online documents
 const axios = require('axios');
 const cheerio = require('cheerio');
+const jquery = require('jquery');
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });//create new client
 
@@ -363,23 +364,17 @@ client.on('messageCreate', msg => {
 					
 		// 			for(let i=0; i< rows.length; i++) {
 		// 				const row = rows[i];
-
 		// 				const value = await row.$eval('div.sidearm-schedule-game-opponent-date.flex-item-1', element => element.textContent);
 		// 				console.log(value); // incorrect selector for value
 		// 				//const value = await row.$eval('')
 		// 				if(value === 'Mar 10 (Thu)') {
-		// 					console.log('value',  value);
-		// 				}
-		// 				else if (label.trim() === 'XYZ') {
-		// 					console.log("ZYX", value);
-		// 				}
-		// 			}
-
+		// 	
 		// 			await browser.close();
 		// 		}
 		// 		run()
 		// 	})();
 		// 	break;
+
 		case "!webscrape":
 			// webscraping done directly from the HTML of gopsusports.com
 			// Testing use of https://github.com/puppeteer/puppeteer
@@ -394,10 +389,13 @@ client.on('messageCreate', msg => {
 					const text = await (await element.getProperty("innerText")).jsonValue();
 					console.log(await text);
 					msg.reply(await text);
+
+					await browser.close();
 				}
 				run()
 			})();
 			break;
+
 	}
 
 });
