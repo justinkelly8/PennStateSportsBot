@@ -1,6 +1,8 @@
 # Penn State Sports StatBot for Discord
 Penn State Sports Discord Bot for Capstone Project
 
+### This repository is made for Academic purposes only and as part of the capstone course project.
+
 # Commands
 ```
 !season followed by the desired sport eg. "!season mbasketball"  
