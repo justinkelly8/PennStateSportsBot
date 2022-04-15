@@ -353,7 +353,7 @@ client.on('messageCreate', msg => {
 			msg.reply(seasonHelp);
 			break;
 
-		case "!game mbasketball Nov 10":
+		case "!mbasketball Nov 10":
 			// gets input and compares to scores from Penn State's schedule
 			async function getGameDaysAndLinks() {
 				const { data } = await axios.get(basketball_url)
@@ -381,7 +381,7 @@ client.on('messageCreate', msg => {
 
 			break;
 
-		case "!game mbasketball Nov 15":
+		case "!mbasketball Nov 15":
 			// gets input and compares to scores from Penn State's schedule
 			async function getGameDayAndLink() {
 				const { data } = await axios.get(basketball_url)
@@ -409,7 +409,7 @@ client.on('messageCreate', msg => {
 
 			break;
 
-		case "!game mbasketball Mar 10":
+		case "!mbasketball Mar 10":
 			// gets input and compares to scores from Penn State's schedule
 			async function ohioGameDayAndLink() {
 				const { data } = await axios.get(basketball_url)
@@ -437,25 +437,66 @@ client.on('messageCreate', msg => {
 
 			break;
 
-		case "!webscrape":
-			// webscraping done directly from the HTML of gopsusports.com
-			// Testing use of https://github.com/puppeteer/puppeteer
-			(async () => {
-				// page is loaded in Chromium by the bot + puppeteer
-				async function run() {
-					const browser = await puppeteer.launch({ headless: false })
-					const page = await browser.newPage()
-					await page.goto('https://gopsusports.com/sports/mens-basketball/schedule')
-
-					const element = await page.$("div.sidearm-schedule-game-result");
-					const text = await (await element.getProperty("innerText")).jsonValue();
-					console.log(await text);
-					msg.reply(await text);
-
-					await browser.close();
+		case "!football Sep 4":
+			const fBallDateInput1 = "Sep 4, 2021";
+			// webscraping done directly from the HTML of sports-reference.com
+			async function getFootBallGameDaysAndLinks1() {
+				const page_url = 'https://www.sports-reference.com/cfb/schools/penn-state/2021-schedule.html'
+				const { data } = await axios.get(page_url)
+				const $ = cheerio.load(data)
+				const table = $('#schedule')
+				const games = []
+				table.find('tbody > tr').each((i, element) => {
+					const $row = $(element)
+					const game = {}
+					game.number = $row.find('th').first().text().trim()
+					const labels = ['date_game', 'time_game', 'day_name', 'school_name', 'game_location', 'opp_name', 'conf_abbr', 'game_result', 'points', 'opp_points', 'wins', 'losses', 'game_streak', 'notes']
+					$row.find('td').each((i, element) => {
+						const $col = $(element)
+						const label = labels[i]
+						game[label] = $col.text().trim()
+					})
+					games.push(game)
+				})
+				for (var i = 0; i < games.length; i++) {
+					if (games[i].date_game == fBallDateInput1) {
+						console.log(games[i].school_name + " " + games[i].points + " - " + games[i].opp_points + " " + games[i].opp_name);
+						msg.reply(games[i].school_name + " " + games[i].points + " - " + games[i].opp_points + " " + games[i].opp_name);
+					}
 				}
-				run()
-			})();
+			}
+			getFootBallGameDaysAndLinks1()
+			break;
+
+		case "!football Sep 18":
+			const fBallDateInput = "Sep 18, 2021";
+			// webscraping done directly from the HTML of sports-reference.com
+			async function getFootBallGameDaysAndLinks() {
+				const page_url = 'https://www.sports-reference.com/cfb/schools/penn-state/2021-schedule.html'
+				const { data } = await axios.get(page_url)
+				const $ = cheerio.load(data)
+				const table = $('#schedule')
+				const games = []
+				table.find('tbody > tr').each((i, element) => {
+					const $row = $(element)
+					const game = {}
+					game.number = $row.find('th').first().text().trim()
+					const labels = ['date_game', 'time_game', 'day_name', 'school_name', 'game_location', 'opp_name', 'conf_abbr', 'game_result', 'points', 'opp_points', 'wins', 'losses', 'game_streak', 'notes']
+					$row.find('td').each((i, element) => {
+						const $col = $(element)
+						const label = labels[i]
+						game[label] = $col.text().trim()
+					})
+					games.push(game)
+				})
+				for (var i = 0; i < games.length; i++) {
+					if (games[i].date_game == fBallDateInput) {
+						console.log(games[i].school_name + " " + games[i].points + " - " + games[i].opp_points + " " + games[i].opp_name);
+						msg.reply(games[i].school_name + " " + games[i].points + " - " + games[i].opp_points + " " + games[i].opp_name);
+					}
+				}
+			}
+			getFootBallGameDaysAndLinks()
 			break;
 
 		case "!stats ":
