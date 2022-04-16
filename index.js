@@ -27,7 +27,8 @@ client.on('messageCreate', msg => {
 			// documentation for bot commands
 			const helpEmbed = new Discord.MessageEmbed()
 				.setTitle("Commands Documentation")
-				.setDescription(`!test - bot responds with "Hello"\n!help - provides full list of bot commands\n!options - outputs list of command options with hyperlinks for easy access\n!ticketinfo - bot provides link to get PSU sports tickets\n!calendar - outputs link to PSU sports calendar\n!news - links to current sports news\n!crash - resets the bot`);
+				.setDescription(`!test - bot responds with "Hello"\n!help - provides full list of bot commands\n!options - outputs list of command options with hyperlinks for easy access\n!ticketinfo - bot provides link to get PSU sports tickets\n!calendar - outputs link to PSU sports calendar\n!news - links to current sports news\n!crash - resets the bot\n!season followed by the desired sport eg. "!season mbasketball" (msoccer, wtennis, football, baseball, etc) - responds with this season's overall record for the sport
+				!season help - provides a list of options for "!season" command `);
 			msg.reply({ embeds: [helpEmbed] });
 			break;
 		case "!ticketinfo":
